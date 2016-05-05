@@ -24,7 +24,7 @@ module.exports = RNNWriter =
     @keySubscriptions.add atom.commands.add "atom-workspace", "rnn-writer:accept-suggestion-right": => @keyAcceptSuggestion("right")
     @keySubscriptions.add atom.commands.add "atom-workspace", "rnn-writer:accept-suggestion-enter": => @keyAcceptSuggestion("enter")
     @keySubscriptions.add atom.commands.add "atom-workspace", "rnn-writer:cancel-suggestion-left": => @keyCancelSuggestion("left")
-    @keySubscriptions.add atom.commands.add "atom-workspace", "rnn-writer:cancel-suggestion-esc": => @keyCancelSuggestion("esc")
+    @keySubscriptions.add atom.commands.add "atom-workspace", "rnn-writer:cancel-suggestion-esc": => @keyCancelSuggestion("escape")
 
     @running = false
 
@@ -314,6 +314,7 @@ module.exports = RNNWriter =
         atom.commands.dispatch(atom.views.getView(@editor), "editor:newline")
 
   keyCancelSuggestion: (key) ->
+    console.log(key)
     @editor = atom.workspace.getActiveTextEditor()
 
     if @running and @offeringSuggestions
@@ -321,5 +322,5 @@ module.exports = RNNWriter =
     else
       if key == "left"
         atom.commands.dispatch(atom.views.getView(@editor), "core:move-left")
-      if key == "esc"
+      if key == "escape"
         atom.commands.dispatch(atom.views.getView(@editor), "editor:consolidate-selections")

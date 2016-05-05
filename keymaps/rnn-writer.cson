@@ -6,4 +6,4 @@
   "right": "rnn-writer:accept-suggestion-right"
   "enter": "rnn-writer:accept-suggestion-enter"
   "left": "rnn-writer:cancel-suggestion-left"
-  "esc": "rnn-writer:cancel-suggestion-esc"
+  "escape": "rnn-writer:cancel-suggestion-esc"
