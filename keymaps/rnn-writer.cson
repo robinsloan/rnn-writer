@@ -1,0 +1,9 @@
+"atom-text-editor[data-grammar=\"text plain\"]:not([mini])":
+  "shift-cmd-R": "rnn-writer:toggle"
+  "tab": "rnn-writer:suggest"
+  "up": "rnn-writer:scroll-up-suggestion"
+  "down": "rnn-writer:scroll-down-suggestion"
+  "right": "rnn-writer:accept-suggestion-right"
+  "enter": "rnn-writer:accept-suggestion-enter"
+  "left": "rnn-writer:cancel-suggestion-left"
+  "esc": "rnn-writer:cancel-suggestion-esc"

@@ -1,0 +1,5 @@
+'context-menu':
+  'atom-text-editor[data-grammar=\"text plain\"]:not([mini])': [
+    {
+    }
+]

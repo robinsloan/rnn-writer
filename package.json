@@ -1,0 +1,15 @@
+{
+  "name": "rnn-writer",
+  "main": "./lib/rnn-writer",
+  "version": "0.0.1",
+  "description": "RNN Writer",
+  "repository": "https://github.com/robinsloan/rnn-writer",
+  "license": "Apache",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "dependencies": {
+    "request-json": ">=0.5.6",
+    "sfx": ">=0.1.1"
+  }
+}
