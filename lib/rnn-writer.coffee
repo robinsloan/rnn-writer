@@ -6,6 +6,8 @@ sfx = require "sfx"
 
 module.exports = RNNWriter =
 
+  GET_MORE_SUGGESTIONS_THRESHOLD: 3
+
   # let's muddle through CoffeeScript together, shall we
 
   config: require "./rnn-writer-config"
@@ -29,44 +31,42 @@ module.exports = RNNWriter =
     @running = false
 
   toggle: ->
-    if not @running
-      if atom.config.get("rnn-writer.overrideBracketMatcher")
-        atom.config.set("bracket-matcher.autocompleteBrackets", false) # :)
-
-      @LOOKBACK_LENGTH = atom.config.get("rnn-writer.lookbackLength")
-      @NUM_SUGGESTIONS_PER_REQUEST = atom.config.get("rnn-writer.numberOfSuggestionsPerRequest")
-      if atom.config.get("rnn-writer.textBargains.usingTextBargains")
-        @GENERATOR_BASE = "https://text.bargains"
-        @API_KEY = atom.config.get("rnn-writer.textBargains.apiKey")
-      else if atom.config.get("rnn-writer.localSuggestionGenerator")
-        @GENERATOR_BASE = atom.config.get("rnn-writer.localSuggestionGenerator")
-      else
-        @showError "There's no server specified in the `rnn-writer` package settings."
-        return
-
-      @GET_MORE_SUGGESTIONS_THRESHOLD = 3
-
-      @client = request.createClient(@GENERATOR_BASE)
-      if @API_KEY then @client.headers["x-api-key"] = @API_KEY
-
-      @client.get "/", (error, response, body) =>
-        if error
-          console.log "...error."
-          console.log JSON.stringify(error, null, 2)
-          @showError "Tried to start RNN Writer, but couldn't reach the server. Check your developer console for more details."
-          @running = false
-        else
-          successMessage = "RNN Writer is up and running. Press `tab` for completions."
-          if @API_KEY and body["message"] then successMessage += " " + body["message"]
-          @showMessage successMessage
-          @running = true
-
-      @reset "Setting all vars for the first time."
-
-    else
+    if @running
       @showMessage "RNN Writer has shut down."
       @running = false
       @reset "Shutting down for now."
+      return
+
+    if atom.config.get("rnn-writer.overrideBracketMatcher")
+      atom.config.set("bracket-matcher.autocompleteBrackets", false) # :)
+
+    @LOOKBACK_LENGTH = atom.config.get("rnn-writer.lookbackLength")
+    @NUM_SUGGESTIONS_PER_REQUEST = atom.config.get("rnn-writer.numberOfSuggestionsPerRequest")
+    if atom.config.get("rnn-writer.textBargains.usingTextBargains")
+      @GENERATOR_BASE = "https://text.bargains"
+      @API_KEY = atom.config.get("rnn-writer.textBargains.apiKey")
+    else if atom.config.get("rnn-writer.localSuggestionGenerator")
+      @GENERATOR_BASE = atom.config.get("rnn-writer.localSuggestionGenerator")
+    else
+      @showError "There's no server specified in the `rnn-writer` package settings."
+      return
+
+    @client = request.createClient(@GENERATOR_BASE)
+    if @API_KEY then @client.headers["x-api-key"] = @API_KEY
+
+    @client.get "/", (error, response, body) =>
+      if error
+        console.log "...error."
+        console.log JSON.stringify(error, null, 2)
+        @showError "Tried to start RNN Writer, but couldn't reach the server. Check your developer console for more details."
+        @running = false
+      else
+        successMessage = "RNN Writer is up and running. Press `tab` for completions."
+        if @API_KEY and body["message"] then successMessage += " " + body["message"]
+        @showMessage successMessage
+        @running = true
+
+    @reset "Setting all vars for the first time."
 
   deactivate: ->
     @reset "Deactivated!"
