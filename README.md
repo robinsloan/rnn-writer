@@ -30,7 +30,7 @@ The only thing missing is the location of a server to provide the "autocompletio
 
 ###text.bargains :)
 
-I pretty strongly recommend running a local installation of `torch-rnn-server`, only because it makes the writing experience so very snappy and satisfying. But, if that's too daunting, I'm providing an API at `text.bargains` through which you can access a trained RNN... running on a computer... sitting under a table... in my office.
+I strongly recommend running a local installation of `torch-rnn-server`, only because it makes the writing experience so very snappy and satisfying. But, if that's too daunting, I'm providing an API at `text.bargains` through which you can access a trained RNN... running on a computer... sitting under a table... in my office.
 
 If you email me at `api@robinsloan.com` I'll happily set you up with an API key, with the understanding that this is a service provided for fun and experimentation and it could go offline at any time.
 
