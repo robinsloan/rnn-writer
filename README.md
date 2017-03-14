@@ -38,7 +38,9 @@ Okay SO: at this point, you either have `torch-rnn-server` running on your compu
 
 ###Use this thing!
 
-This package only pays attention to files that have the `.txt` extension, so if you're typing in a fresh Atom window, be sure to save once (`noveldraft.txt`?) before proceeding.
+**This package only pays attention to files that have the `.txt` extension**, so if you're typing in a fresh Atom window, be sure to save once (`noveldraft.txt`?) before proceeding.
+
+One more time: **be sure you're looking at a file with the `.txt` extension.** Then:
 
 **Activate the package using `cmd-shift-R`.**
 
