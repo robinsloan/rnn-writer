@@ -23,18 +23,7 @@ Next, open Atom. Go to the Settings screen (`cmd+,`) and select Packages on the 
 
 ### Configuration
 
-The only thing missing is the location of a server to provide the "autocompletions." You have two options:
-
-1. Download and set up [`torch-rnn-server`](https://github.com/robinsloan/torch-rnn-server) along with its dependencies, which are many -- but you can skip several if you're using a pretrained model. After doing this, tell `rnn-writer` where to find `torch-rnn-server`, e.g. at `http://localhost:8080`.
-2. Or...
-
-### text.bargains :)
-
-I strongly recommend running a local installation of `torch-rnn-server`, only because it makes the writing experience so very snappy and satisfying. But, if that's too daunting, I'm providing an API at `text.bargains` through which you can access a trained RNN... running on a computer... sitting under a table... in my office.
-
-If you email me at `api@robinsloan.com` I'll happily set you up with an API key, with the understanding that this is a service provided for fun and experimentation and it could go offline at any time.
-
-Okay SO: at this point, you either have `torch-rnn-server` running on your computer, or you've contacted me for a time-limited and vaguely suspicious `text.bargains` API key. Now, let's
+The only thing missing is the location of a server to provide the "autocompletions." You should download and set up [`torch-rnn-server`](https://github.com/robinsloan/torch-rnn-server) along with its dependencies, which are many -- but you can skip several if you're using a pretrained model. After doing this, tell `rnn-writer` where to find `torch-rnn-server`, e.g. at `http://localhost:8080`.
 
 ### Use this thing!
 
